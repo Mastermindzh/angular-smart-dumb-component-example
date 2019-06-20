@@ -1,0 +1,14 @@
+<div
+  class="box"
+  (click)="onClick($event)"
+  (contextmenu)="onContextMenu($event)"
+>
+  <span *ngFor="let item of dots">
+    <div
+      *ngIf="item"
+      class="dot"
+      [style.left]="item.x + 'px'"
+      [style.top]="item.y + 'px'"
+    ></div>
+  </span>
+</div>

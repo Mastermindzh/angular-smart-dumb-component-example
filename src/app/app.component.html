@@ -1,0 +1,57 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>Welcome to {{ title }}!</h1>
+  <p>Try clicking in the boxes a bit, be sure to try a right click too!</p>
+  <br />
+  <p>
+    This app demonstrates that components should accept data / methods to
+    execute rather than contain logic themselves. Components which hold logic
+    are not re-usable to the same extend that the "dumber" components are.
+  </p>
+  <a
+    href="https://medium.com/@jtomaszewski/how-to-write-good-composable-and-pure-components-in-angular-2-1756945c0f5b"
+  >
+    Random medium article which explains this rather well.
+  </a>
+</div>
+
+<div style="float: left; margin-right: 20px;">
+  <h1>Geocode</h1>
+  <p>shows a single dot</p>
+
+  <!-- dumb component only accepts data and methods to execute on events -->
+  <map-component
+    [dots]="[this.geoCodeDot]"
+    (myClick)="onGeoClick($event)"
+    (rightClick)="onGeoClick($event)"
+  ></map-component>
+  <pre>{{ this.geoCodeDot | json }}</pre>
+</div>
+
+<div style="float: left;  margin-right: 20px;">
+  <h1>Add trucks?</h1>
+  <p>shows multiple dots</p>
+  <!-- The same dumb component but with different behaviour because the method we give it is different -->
+  <map-component
+    [dots]="this.routingDots"
+    (myClick)="addDot($event)"
+    (rightClick)="scream('no!')"
+  ></map-component>
+
+  <pre
+    >{{ this.routingDots | json }}
+  </pre>
+</div>
+
+<div style="float:left;">
+  <h1>Component version</h1>
+
+  <!--
+    "Smart" component which handles the "geocode" logic itself and simply allows us to retrieve the click event data
+    There is NO way to make this component display more than 1 dot except by modifying the component thus limiting
+    its potential use cases.
+  -->
+  <app-geo-code-component
+    (onGeoCode)="handleGeoCodeFromComponent($event)"
+  ></app-geo-code-component>
+</div>

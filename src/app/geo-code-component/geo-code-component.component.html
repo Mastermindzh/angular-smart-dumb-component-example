@@ -1,0 +1,22 @@
+<p>
+  I am a special component!
+  <span style="font-size: 9px"
+    >but I still use the base building block "map-app-component"</span
+  >
+</p>
+<map-component
+  [dots]="[this.geoCodeDot]"
+  (myClick)="onGeoClick($event)"
+  (rightClick)="onGeoClick($event)"
+></map-component>
+<h2>Pretty x/y</h2>
+<span>x = {{ this.geoCodeDot ? this.geoCodeDot.x : 0 }}</span> <br />
+<span>y = {{ this.geoCodeDot ? this.geoCodeDot.y : 0 }}</span> <br />
+<span
+  >DidRightClick?
+  {{
+    this.geoCodeDot && this.geoCodeDot.rightClick
+      ? this.geoCodeDot.rightClick
+      : false
+  }}</span
+>
