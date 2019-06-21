@@ -31,4 +31,15 @@ export class AppComponent {
   public handleGeoCodeFromComponent(event: any) {
     console.warn("EVENT FROM COMPONENT", event);
   }
+
+  public moveDots: Dot[] = [{ x: 971, y: 386 }];
+
+  public onMoveDot(event: MouseEvent) {
+    if (this.moveDots.length < 2) {
+      this.moveDots.push(event);
+    } else {
+      this.moveDots = [];
+      this.moveDots.push(event);
+    }
+  }
 }

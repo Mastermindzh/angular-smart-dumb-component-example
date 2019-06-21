@@ -55,3 +55,15 @@
     (onGeoCode)="handleGeoCodeFromComponent($event)"
   ></app-geo-code-component>
 </div>
+
+<div style="float: left; margin-right: 20px;">
+  <h1>Geocode</h1>
+  <p>shows a single dot</p>
+
+  <!-- dumb component only accepts data and methods to execute on events -->
+  <map-component
+    [dots]="this.moveDots"
+    (myClick)="onMoveDot($event)"
+  ></map-component>
+  <pre>{{ this.geoCodeDot | json }}</pre>
+</div>
